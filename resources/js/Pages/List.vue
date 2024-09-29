@@ -121,7 +121,7 @@
                     </div>
                     <div>
                         <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] auto-rows-[150px 200px]">
-                            <h3 class="font-semibold text-center">Presentes que gostaríamos de ganhar mais não gostaríamos de pedir.</h3>
+                            <h3 class="font-semibold text-center">Presentes que gostaríamos de ganhar, mas não gostaríamos de pedir.</h3>
                             <div class="w-full px-4 py-2 h-12" v-for="presente in presentes_especiais" :key="presente.id" :data-tooltip-target=" presente.descricao ? 'tooltip-default'+presente.id : ''">
                                 <div class="flex flex-row justify-between h-full bg-white rounded-xl py-1 px-2 items-center">
                                     <div class="flex flex-row items-center">
