@@ -18,6 +18,7 @@
     const isModalPresenteOpened = ref(false);
     const isModalCorOpened = ref(false);
 
+
     const openModalPresente = () => {
         isModalPresenteOpened.value = true;
     };
@@ -28,7 +29,7 @@
         isModalPresenteOpened.value = false;
     };
     const closeModalCor = () => {
-        isModalColorOpened.value = false;
+        isModalCorOpened.value = false;
     };
 
     const submitHandlerPresente = (presente)=>{
@@ -80,23 +81,23 @@
 <template>
 
     <Head title="Admin" />
-    <div class="h-screen bg-gradient-to-r from-purple-400 to-blue-400 bg-cover bg-center">
-        <div class="h-screen bg-white w-screen bg-opacity-50 px-4 py-2 md:px-16 md:py-10">
-            <div class="flex flex-col h-full w-full rounded-2xl border border-black overflow-y-auto md:overflow-hidden">
+    <div class="h-screen bg-gradient-to-r from-purple-500 to-blue-500 bg-cover bg-center">
+        <div class="h-screen bg-white w-screen bg-opacity-50 px-4 py-2 md:px-8 md:pt-6 md:pb-8 2xl:px-12 2xl:pt-8 2xl:pb-16">
+            <div class="flex flex-col h-full w-full rounded-2xl border border-black overflow-y-auto">
                 <div class="flex flex-col md:flex-row justify-between border-b border-black pt-3 px-3">
                     <div class="flex flex-col items-center md:items-start gap-2 md:gap-0">
-                        <h1 class="text-4xl text-black text-center">lista de presentes</h1>
+                        <h1 class="text-4xl text-black text-center">Lista de Presentes</h1>
                         <small class="text-black text-justify md:text-start">
-                            saiba antes de tudo que já estamos muito felizes com a sua presença e por isso, não se sinta obrigado a nos presentear.
-                            caso queiram, escolhemos algumas opções que nos ajudarão a realizar nossos sonhos.
+                            Saiba antes de tudo que já estamos muito felizes com a sua presença e por isso, não se sinta obrigado a nos presentear.
+                            Caso queiram, escolhemos algumas opções que nos ajudarão a realizar nossos sonhos.
                         </small>
                     </div>
                     <div class="flex flex-col">
                         <span class="text-black text-center">
-                            <b>nossa paleta de cores</b>
+                            <b>Paleta de cores da casa</b>
                         </span>
                         <div class="flex justify-center">
-                            <button v-for="color in cores" :key="color.id" class="w-10 h-10 rounded-full m-1" :style="{ backgroundColor: color.hex }" @click="deleteCor(color.id)" id="color-picker">
+                            <button v-for="color in cores" :key="color.id" class="w-10 h-10 rounded-full m-1 cursor-pointer" :style="{ backgroundColor: color.hex }" @click="deleteCor(color.id)" id="color-picker">
                                 <FontAwesomeIcon :icon="fas.faTrash" class="text-white"/>
                             </button>
                             <button class="w-10 h-10 bg-slate-500 rounded-full m-1" @click="openModalCor" id="color-picker">
@@ -105,10 +106,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] h-full">
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] h-full">
                     <div class="md:col-span-3">
-                        <div class="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] auto-rows-[150px 200px]">
-                            <div class="w-full px-4 py-2 h-12" v-for="presente in presentes_normais" :key="presente.id" :data-tooltip-target=" presente.descricao ? 'tooltip-default'+presente.id : ''">
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] auto-rows-[150px 200px]">
+                            <div class="w-full px-1 py-2 h-12" v-for="presente in presentes_normais" :key="presente.id" :data-tooltip-target=" presente.descricao ? 'tooltip-default'+presente.id : ''">
                                 <div class="flex flex-row justify-between h-full bg-white rounded-xl py-1 px-2 items-center">
                                     <div class="flex flex-row items-center">
                                         <input type="checkbox" class="checkName border p-3 rounded-full" :checked="presente.comprado" @change="toggleComprado(presente)"/>
@@ -121,10 +122,10 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                     <div class="flex flex-row items-center gap-2">
-                                        <button class="px-1 py-0 rounded-full h-7 w-7 border border-gray-500">
+                                        <button class="px-1 py-0 rounded-full h-7 w-7 border border-gray-500 cursor-pointer">
                                             <FontAwesomeIcon :icon="fas.faTrash" class="text-sm" @click="deletePresente(presente.id)" />
                                         </button>
-                                        <button v-if="presente.links.length > 0" :data-popover-target="'popover-right-'+presente.id" data-popover-trigger="click" data-popover-placement="right" class="px-1 py-0 rounded-full h-7 w-7 border border-gray-500">
+                                        <button v-if="presente.links.length > 0" :data-popover-target="'popover-right-'+presente.id" data-popover-trigger="click" data-popover-placement="right" class="px-1 py-0 rounded-full h-7 w-7 border border-gray-500 cursor-pointer">
                                             <!-- lightbulb -->
                                             <FontAwesomeIcon :icon="fas.faLink" class="text-sm"/>
                                         </button>
@@ -140,7 +141,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-full h-12 px-4 py-2">
+                            <div class="w-full h-12 px-1 py-2">
                                 <button class="bg-white h-full text-black px-4 py-2 rounded-xl w-full" @click="openModalPresente">
                                     <FontAwesomeIcon :icon="fas.faPlus" />
                                 </button>
@@ -148,9 +149,9 @@
                         </div>
                     </div>
                     <div>
-                        <div class="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] auto-rows-[150px 200px]">
-                            <h3 class="font-semibold text-center">presentes que gostaríamos de ganhar mais não gostaríamos de pedir</h3>
-                            <div class="w-full px-4 py-2 h-12" v-for="presente in presentes_especiais" :key="presente.id" :data-tooltip-target=" presente.descricao ? 'tooltip-default'+presente.id : ''">
+                        <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] auto-rows-[150px 200px]">
+                            <h3 class="font-semibold text-center">Presentes que gostaríamos de ganhar mais não gostaríamos de pedir.</h3>
+                            <div class="w-full px-1 py-2 h-12" v-for="presente in presentes_especiais" :key="presente.id" :data-tooltip-target=" presente.descricao ? 'tooltip-default'+presente.id : ''">
                                 <div class="flex flex-row justify-between h-full bg-white rounded-xl py-1 px-2 items-center">
                                     <div class="flex flex-row items-center">
                                         <input type="checkbox" class="checkName border p-3 rounded-full":checked="presente.comprado" @change="toggleComprado(presente)"/>
