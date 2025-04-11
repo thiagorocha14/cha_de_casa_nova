@@ -34,6 +34,18 @@ class PresenteController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function invite()
+    {
+        try {
+            return Inertia::render('Invite');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function comprado(Request $request)

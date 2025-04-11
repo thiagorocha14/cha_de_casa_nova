@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PresenteController::class, 'index']);
 Route::get('/admin', [PresenteController::class, 'admin']);
+Route::get(uri: '/invite', action: [PresenteController::class, 'invite']);
 Route::post('/admin/presente', [PresenteController::class, 'store']);
 Route::delete('/admin/presente/{presente}', [PresenteController::class, 'destroy']);
 
